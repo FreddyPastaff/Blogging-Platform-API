@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-from rest_framework import authentication
 import django_filters
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -47,9 +46,10 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES':[
-        authentication.SessionAuthentication, # Enable session authentication
-        authentication.TokenAuthentication, # Enable token authentication
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework_simplejwt.authentication.JWTAuthentication',  # optional if using SimpleJWT
     ],
     'DEFAULT_PERMISSION_CLASSES': [ 
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
