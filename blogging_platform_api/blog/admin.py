@@ -1,9 +1,10 @@
 from django.contrib import admin
+from django.apps import apps
 
-from .models import Category, Tag, Post, Comment, LikeAndRating
+Category = apps.get_model('blog', 'Category')
+Tag = apps.get_model('blog', 'Tag')
+Post = apps.get_model('blog', 'Post')
+Comment = apps.get_model('blog', 'Comment')
+LikeAndRating = apps.get_model('blog', 'LikeAndRating')
 
-admin.site.register(Category)
-admin.site.register(Tag)
-admin.site.register(Post)
-admin.site.register(Comment)
-admin.site.register(LikeAndRating) 
+admin.site.register([Category, Tag, Post, Comment, LikeAndRating])

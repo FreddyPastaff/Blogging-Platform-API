@@ -11,11 +11,11 @@ class Category(models.Model):
     def __str__(self):
         return self.name
     
-    class Tag(models.Model):
-        name = models.CharField(max_length=50, unique=True)
+class Tag(models.Model):
+    name = models.CharField(max_length=50, unique=True)
 
-        def __str__(self):
-            return self.name
+    def __str__(self):
+        return self.name
     
 class Post(models.Model):
     STATUS_CHOICES = [
@@ -55,4 +55,4 @@ class LikeAndRating(models.Model):
 
     def __str__(self):
         return f'{"Like" if self.liked else "Dislike"} by {self.user} on {self.post}'
-    
+
