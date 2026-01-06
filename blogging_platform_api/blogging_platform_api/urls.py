@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
 from rest_framework import routers
 from blog.views import CategoryViewSet, TagViewSet, PostViewSet, CommentViewSet, LikeAndRatingViewSet
 from rest_framework_simplejwt.views import (
@@ -31,6 +32,7 @@ router.register(r'comments', CommentViewSet)
 router.register(r'likes-and-ratings', LikeAndRatingViewSet)
 
 urlpatterns = [
+    path('', RedirectView.as_view(url='/api/', permanent=False)),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
